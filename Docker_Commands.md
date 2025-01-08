@@ -1,5 +1,4 @@
 
-```markdown
 # Docker Commands
 
 ## Pull Odoo Docker Image
@@ -199,15 +198,11 @@
   docker tag <image_name>:<version>
   ```
 
-## References
-- [Codeclef: Docker Commands to Stop and Remove All Images and Containers](https://codeclef.medium.com/docker-commands-to-stop-and-remove-all-images-and-containers-2995c5c5f586)
-```
+------------------------------------------------------------------------------------------------------------------
 
----
 
-Here’s a comprehensive list of **Docker commands** that cover basic, intermediate, and advanced functionalities:
+### **Basic Docker Commands**
 
-### Basic Docker Commands
 
 #### Docker Installation & Information
 - **Check Docker version**:
