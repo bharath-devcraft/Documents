@@ -97,7 +97,7 @@
 
 --------------------------------------------------------------------------------------------------------
 
-### **Ksolve interview questions: **
+### Ksolve interview questions:
 
 
 1. Abstract Model: What is an abstract model in Odoo, and how is it used to create a base model for other models to inherit from?
