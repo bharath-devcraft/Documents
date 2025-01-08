@@ -139,6 +139,8 @@
 
 --------------------------------------------------------------------------------------------------------------
 
+### **Advanced Odoo interview questions**
+
 ### **1. Advanced ORM and Database**
 1. Explain the purpose and use of `_auto`, `_sql_constraints`, and `_log_access` attributes in Odoo models.
 2. How do you write custom SQL queries in Odoo, and when would you use them?
@@ -242,6 +244,228 @@
 1. What are the key improvements in Odoo 16/17 compared to earlier versions?
 2. How do you handle compatibility issues when upgrading custom modules for new Odoo versions?
 3. Have you worked with the new OWL framework introduced in recent versions? If so, what are its advantages?
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+### **Twist and tactics-style Odoo interview questions**
+
+### **1. Problem-Solving Under Constraints**
+1. **Question**: Your client reports that the `create` button in a custom module's list view disappeared after adding a custom record rule. The record rule seems fine, but the issue persists. How would you debug and resolve this?
+   - **Twist**: You cannot remove the record rule, as it's critical for security.
+
+2. **Question**: A customer wants a field in their model to be editable only on certain days of the week. How would you implement this without changing the database schema?
+   - **Tactic**: Can you use views, record rules, or on-the-fly validation?
+
+3. **Question**: Your Odoo instance is performing well locally but is slow when deployed on a cloud server. What steps would you take to identify and fix the bottleneck?
+   - **Twist**: You only have limited access to the cloud server (e.g., no direct database access).
+
+---
+
+### **2. Security Challenges**
+1. **Question**: A user has found a way to bypass security restrictions using a direct API call (e.g., JSON-RPC). How would you address this vulnerability without disrupting existing functionality?
+   - **Twist**: The system must still allow API access for valid use cases.
+
+2. **Question**: You are asked to restrict access to a sensitive field in a multi-company setup, but the field should remain visible for users with specific roles. How would you implement this in a way that is both secure and maintainable?
+
+---
+
+### **3. Unexpected Use Cases**
+1. **Question**: A user requests an "Undo" button for their transactions module to revert the last action. Odoo doesn’t have this feature by default. How would you implement it?
+   - **Twist**: The user insists that this feature must not affect performance and should work even if multiple users are editing simultaneously.
+
+2. **Question**: A client wants to track changes made to specific records but does not want to use the built-in chatter feature. How would you design a lightweight solution?
+   - **Tactic**: Can you leverage `write` method overrides or database triggers?
+
+---
+
+### **4. Integration Scenarios**
+1. **Question**: An external service sends data in XML format, but Odoo only supports JSON by default for its API. How would you integrate this service into Odoo?
+   - **Twist**: The external service does not support any changes to its output format.
+
+2. **Question**: While integrating a payment gateway, you realize that their API rate limits requests, and Odoo's cron job sometimes exceeds this limit. How would you handle this issue?
+   - **Tactic**: Focus on queue management and graceful error handling.
+
+---
+
+### **5. Data and Reports**
+1. **Question**: A client complains that a custom report takes too long to generate due to a large number of records. How would you optimize the report generation?
+   - **Twist**: The client insists on keeping all the current data fields in the report.
+
+2. **Question**: The finance department wants a dynamic report that changes based on a user’s role but doesn’t want a separate report for each role. How would you approach this?
+   - **Tactic**: Think about views, contexts, and access control.
+
+---
+
+### **6. Module Design**
+1. **Question**: You are tasked with building a custom module for managing subscription plans. A requirement emerges mid-project that subscriptions should auto-renew and send reminders. How would you incorporate this change without breaking existing functionality?
+   - **Twist**: The deadline remains unchanged.
+
+2. **Question**: Your custom module uses computed fields extensively, and a client complains that form views load too slowly. What strategies would you use to resolve this issue?
+   - **Tactic**: Focus on balancing usability and performance.
+
+---
+
+### **7. Debugging Scenarios**
+1. **Question**: A workflow automation in Odoo triggers twice for the same record under specific conditions. How would you identify the root cause and fix it?
+   - **Twist**: The issue only occurs sporadically, making it hard to replicate.
+
+2. **Question**: A Kanban view is throwing a "Field not found" error after you added a new computed field. The error doesn't appear in any other views. How would you debug this issue?
+   - **Tactic**: Consider view inheritance and model synchronization.
+
+---
+
+### **8. Code Maintenance**
+1. **Question**: During a code review, you discover that the custom module you inherited has no tests and poor documentation. You’re tasked with improving its reliability. What steps would you take?
+   - **Twist**: The module is already in production, so you need to avoid disruptions.
+
+2. **Question**: You need to refactor a method in a core Odoo module to improve its readability and reduce cyclomatic complexity. How would you ensure your changes don’t break existing functionality?
+   - **Tactic**: Think about dependency management and modular design.
+
+---
+
+### **9. Scenario-Based Tactics**
+1. **Scenario**: The CEO of a company using Odoo wants a dashboard to display live data for sales, inventory, and employee attendance. What challenges might arise, and how would you address them?
+2. **Scenario**: You’re asked to deploy an Odoo instance with minimal downtime. What strategies would you use to ensure a seamless deployment?
+3. **Scenario**: A customer requests a new feature, but you realize that implementing it as requested will cause significant performance issues. How would you negotiate and propose an alternative solution?
+
+---
+
+### **10. Trick Questions**
+1. **Question**: Can you explain a situation where overriding the `name_get` method might break an Odoo workflow? How would you handle it?
+2. **Question**: What would happen if you set a computed field to store=True but forget to define the `depends` decorator? How can this impact your module?
+3. **Question**: Is it possible to override a core Odoo method without editing the source code? If so, how? What are the risks involved?
+
+---------------------------------------------------------------------------------------------------------------
+
+
+### **Comprehensive list of technical Odoo questions**
+
+### **1. Odoo Framework Basics**
+1. What is the purpose of the `model` class in Odoo, and how does it differ from `transient` models?
+2. Explain the significance of `_name`, `_inherit`, and `_inherits` in Odoo models.
+3. What are the different types of fields in Odoo, and how do you define a computed field?
+4. What is the difference between `api.model`, `api.multi`, `api.one`, and `api.depends`?
+5. How are database constraints (e.g., `sql_constraints` and `_constraints`) defined in Odoo?
+6. Explain the purpose of `@api.onchange`. How is it different from a computed field with `@api.depends`?
+7. What is the difference between `create`, `write`, `unlink`, and `copy` methods in Odoo?
+
+---
+
+### **2. Advanced ORM Concepts**
+1. How do you perform database joins using the Odoo ORM?
+2. Explain how the `search_read` method works and when to use it.
+3. How can you create a many-to-many relationship between models in Odoo? Provide an example.
+4. How would you handle a complex search condition (e.g., OR, AND operators) in Odoo ORM?
+5. How can you override a built-in model's behavior without modifying its original code?
+6. What is the difference between the `search` and `browse` methods in Odoo?
+
+---
+
+### **3. Security and Access Control**
+1. What are record rules, and how are they different from access control lists (ACLs)?
+2. How do you restrict access to a specific field in Odoo based on user roles?
+3. Explain the `sudo()` method. When should it be used, and what are its potential risks?
+4. How would you implement field-level security in Odoo?
+5. Describe the purpose of the `ir.model.access` CSV files in Odoo.
+
+---
+
+### **4. Views and UI Customization**
+1. What are the different types of views in Odoo, and how do they work?
+   - Form View
+   - Tree View
+   - Kanban View
+   - Graph View
+   - Calendar View
+   - Dashboard View
+2. How can you inherit and modify an existing view in Odoo?
+3. Explain the purpose of the `arch` attribute in XML view definitions.
+4. How do you implement conditional formatting in tree views?
+5. What are widgets in Odoo? Provide examples of commonly used widgets.
+6. How do you handle a situation where a form view doesn't render a field properly?
+7. Explain the role of `context` and `domain` in Odoo views.
+
+---
+
+### **5. Custom Modules**
+1. How do you structure a custom module in Odoo? What are the key components of the module directory?
+2. Explain the purpose of the `__manifest__.py` file. What are its key parameters?
+3. How would you handle module dependencies in Odoo?
+4. Describe the steps to create a wizard in Odoo.
+5. How can you include custom JS and CSS files in your module?
+
+---
+
+### **6. Reports**
+1. How do you create a QWeb report in Odoo?
+2. Explain the differences between QWeb and XLSX reports. When would you use each?
+3. How do you pass parameters from a form to a report?
+4. How would you debug a custom report that is not generating correctly?
+
+---
+
+### **7. Performance Optimization**
+1. How can you improve the performance of Odoo modules when handling large datasets?
+2. Explain how the `store` attribute on computed fields affects performance.
+3. What is lazy loading, and how can it help optimize Odoo views?
+4. How would you profile the execution time of methods in Odoo to identify bottlenecks?
+
+---
+
+### **8. API and Integration**
+1. How do you use Odoo’s XML-RPC or JSON-RPC APIs to integrate with external applications?
+2. How would you secure API endpoints in Odoo to prevent unauthorized access?
+3. How do you handle asynchronous API calls in Odoo?
+4. What is the purpose of `ir.cron`, and how would you use it to schedule API integrations?
+
+---
+
+### **9. Testing**
+1. How do you write unit tests for Odoo models and methods?
+2. What are the main testing frameworks used in Odoo, and how do you run tests?
+3. How would you test for security vulnerabilities in your Odoo module?
+4. Explain the purpose of the `@tagged` decorator in Odoo tests.
+
+---
+
+### **10. Deployment and Maintenance**
+1. What is the difference between Odoo's `community` and `enterprise` editions?
+2. How do you set up an Odoo instance in production (e.g., PostgreSQL, reverse proxy)?
+3. What are the best practices for managing Odoo module updates in a live system?
+4. How do you debug an Odoo instance that won’t start due to a corrupted module?
+
+---
+
+### **11. JavaScript in Odoo**
+1. Explain the role of the `web.assets_backend` and `web.assets_frontend` bundles in Odoo.
+2. How do you extend Odoo’s web client using JavaScript?
+3. How would you handle interactivity in views using JavaScript and OWL (Odoo Web Library)?
+4. How do you debug JavaScript errors in Odoo’s frontend?
+
+---
+
+### **12. Functional and Business Logic**
+1. Explain how multi-company and multi-currency features are implemented in Odoo.
+2. How would you implement approval workflows for custom models in Odoo?
+3. How do you use Odoo's accounting features to automate financial reporting?
+4. Explain the difference between scheduled actions and automation rules in Odoo.
+
+---
+
+### **13. Miscellaneous**
+1. What are the key differences between `@api.depends` and `@api.constrains`?
+2. Explain the purpose of `ir.sequence`. How would you create a custom sequence?
+3. How do you handle backward compatibility when updating an Odoo module?
+4. What is the purpose of `ir.model.fields` and `ir.actions` tables in the Odoo database?
+
+---
+
+### **Twist Questions (Advanced Scenarios)**
+1. How would you optimize a custom Odoo module that is causing frequent database locks?
+2. What steps would you take if two crons in Odoo are conflicting with each other?
+3. How do you debug a sudden slowdown in the Odoo backend while keeping the instance live?
+4. A Kanban view stops loading after a custom widget was added. How would you debug and fix it?
 
 ---
 
